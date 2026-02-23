@@ -1,0 +1,276 @@
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* design system variables */
+:root {
+  --primary: #14b8a6;
+  /* vibrant teal */
+  --primary-glow: rgba(20, 184, 166, 0.5);
+  --error: #f43f5e;
+  --bg-dark: #0f172a;
+  /* deep slate */
+  --bg-card: rgba(30, 41, 59, 0.7);
+  /* glass base */
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-blur: blur(8px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at top left, #1e293b, #0f172a);
+  background-attachment: fixed;
+  color: var(--text-main);
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+header {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: var(--glass-blur);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+header .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
+  transition: opacity 0.2s;
+}
+
+header a:hover {
+  opacity: 0.8;
+}
+
+.pages {
+  max-width: 1400px;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+/* homepage grid */
+.Home {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+}
+
+/* workout details (glass cards) */
+.workout-details {
+  background: var(--bg-card);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  margin: 0 0 1.5rem 0;
+  padding: 1.5rem;
+  position: relative;
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.5s ease backwards;
+}
+
+.workout-details:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+  border-color: rgba(20, 184, 166, 0.3);
+}
+
+.workout-details h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.25rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.workout-details p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.workout-details p strong {
+  color: var(--text-main);
+}
+
+.details-grid {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1rem 0;
+}
+
+.details-grid p {
+  margin: 0;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--glass-border);
+}
+
+.date {
+  font-size: 0.85rem !important;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.workout-details span {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  cursor: pointer;
+  background: rgba(244, 63, 94, 0.1);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: var(--error);
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.workout-details span:hover {
+  background: var(--error);
+  color: white;
+}
+
+/* new workout form */
+form {
+  background: var(--bg-card);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: var(--glass-shadow);
+  position: sticky;
+  top: 6rem;
+}
+
+form h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+input {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  border: 1px solid var(--glass-border);
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 0.5rem;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-glow);
+}
+
+form button {
+  background: linear-gradient(135deg, var(--primary), #0d9488);
+  border: 0;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+form button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+form button:active {
+  transform: translateY(0);
+}
+
+div.error {
+  padding: 0.75rem 1rem;
+  background: rgba(244, 63, 94, 0.05);
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: popIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+input.error {
+  border-color: var(--error);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .Home {
+    grid-template-columns: 1fr;
+  }
+
+  form {
+    position: static;
+  }
+}
