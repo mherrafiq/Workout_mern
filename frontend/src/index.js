@@ -3,14 +3,24 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { WorkoutsContextProvider } from './context/WorkoutContext';
+import { AuthContextProvider } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
 
+
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <WorkoutsContextProvider>
-      <App />
-    </WorkoutsContextProvider>
+    <AuthContextProvider>
+      <ThemeProvider>
+        <WorkoutsContextProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </WorkoutsContextProvider>
+      </ThemeProvider>
+    </AuthContextProvider>
   </React.StrictMode>
 );
 

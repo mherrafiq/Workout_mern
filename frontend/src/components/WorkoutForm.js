@@ -1,9 +1,14 @@
 import { useState } from "react"
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext"
+import { useAuthContext } from "../hooks/useAuthContext"
+import { useLogout } from "../hooks/useLogout"
 
 
 const WorkoutForm = () => {
   const { dispatch } = useWorkoutsContext()
+  const { user } = useAuthContext()
+  const { logout } = useLogout()
+
   const [title, setTitle] = useState('')
   const [load, setLoad] = useState('')
   const [reps, setReps] = useState('')
@@ -11,20 +16,11 @@ const WorkoutForm = () => {
   const [emptyFields, setEmptyFields] = useState([])
 
 
-
-
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    // client-side validation
-    let empty = []
-    if (!title) empty.push('title')
-    if (!load) empty.push('load')
-    if (!reps) empty.push('reps')
-
-    if (empty.length > 0) {
-      setError('Please fill in all the fields')
-      setEmptyFields(empty)
+    if (!user) {
+      setError('You must be logged in')
       return
     }
 
@@ -34,11 +30,17 @@ const WorkoutForm = () => {
       method: 'POST',
       body: JSON.stringify(workout),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
       }
     })
 
     const json = await response.json()
+
+    if (response.status === 401) {
+      logout()
+      return
+    }
 
 
     if (!response.ok) {
