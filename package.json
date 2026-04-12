@@ -1,0 +1,10 @@
+{
+  "name": "workout-mern-monorepo",
+  "version": "1.0.0",
+  "description": "Monorepo for Workout MERN app",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "install-backend": "cd backend && npm install",
+    "prebuild": "npm run install-backend"
+  }
+}
