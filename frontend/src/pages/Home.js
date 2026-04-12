@@ -38,8 +38,7 @@ const Home = () => {
 
         if (user) {
             fetchWorkouts()
-        }
-    }, [dispatch, user])
+    }, [dispatch, user, logout])
 
     // filter workouts based on search term
     const filteredWorkouts = workouts ? workouts.filter(workout =>

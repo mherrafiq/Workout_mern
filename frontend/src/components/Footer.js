@@ -8,7 +8,6 @@ import {
   FaTwitch, 
   FaGithub 
 } from 'react-icons/fa6'
-import { TbWorld } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
