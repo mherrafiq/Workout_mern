@@ -14,8 +14,6 @@ const Home = () => {
     const { user } = useAuthContext()
     const { logout } = useLogout()
     const [searchTerm, setSearchTerm] = useState('')
-
-
     useEffect(() => {
         const fetchWorkouts = async () => {
             const response = await fetch('/api/workouts', {
@@ -38,6 +36,7 @@ const Home = () => {
 
         if (user) {
             fetchWorkouts()
+        }
     }, [dispatch, user, logout])
 
     // filter workouts based on search term
